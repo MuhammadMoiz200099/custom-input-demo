@@ -9,6 +9,6 @@ export function patternValidator(pattern: string): Validator<string> {
           const regex = new RegExp(reg_pattern);
           return regex.test(value);
         },
-        errorMessage: 'Please Fill in a Valid URL'
+        errorMessage: 'Fill in a valid URL'
     };
 }

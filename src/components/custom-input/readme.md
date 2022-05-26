@@ -7,33 +7,13 @@
 
 ## Properties
 
-| Property            | Attribute            | Description                                    | Type      | Default     |
-| ------------------- | -------------------- | ---------------------------------------------- | --------- | ----------- |
-| `isValid`           | `is-valid`           | Handle the validatity constrain of input field | `boolean` | `undefined` |
-| `label`             | `label`              | Define the type of Input Field e.g "url"       | `string`  | `undefined` |
-| `size`              | `size`               | Define the size of input                       | `number`  | `undefined` |
-| `type`              | `type`               | Define the type of Input Field e.g "url"       | `string`  | `undefined` |
-| `validationPattern` | `validation-pattern` | Define the pattern to validate the input field | `string`  | `undefined` |
-
-
-## Events
-
-| Event         | Description                         | Type               |
-| ------------- | ----------------------------------- | ------------------ |
-| `onUserInput` | This is the event for on user input | `CustomEvent<any>` |
-
-
-## Methods
-
-### `validate() => Promise<void>`
-
-
-
-#### Returns
-
-Type: `Promise<void>`
-
-
+| Property            | Attribute                  | Description                                      | Type             | Default     |
+| ------------------- | -------------------------- | ----------------------------------------------- | ---------------- | ----------- |
+| `type`              | `type`                     | Define the type of Input Field e.g "url"        | `string`         | `undefined` |
+| `isValid`           | `isValid`                  | Handle the validatity constrain of input field  | `boolean`        | `undefined` |
+| `size`              | `size`                     | Define the size of input                        | `number`         | `undefined` |
+| `validationPattern` | `midvalidationPatterndle`  | Define the pattern to validate the input field  | `string`         | `undefined` |
+| `onUserInput`       | `onUserInput`              | This is the event for on user input             | `(e: any) => {}` | `undefined` |
 
 
 ----------------------------------------------

@@ -1,5 +1,5 @@
 import { Component, Prop, h, Event, EventEmitter, State, Method } from '@stencil/core';
-import { handleValidationObject } from '../../utils/validator.utils';
+import { handleValidationObject } from '../../utills/validator.utils';
 import { Validator, getValidator, defaultValidator } from '../../validators';
 
 @Component({

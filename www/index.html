@@ -1,1 +1,10 @@
-<!doctype html><html dir="ltr" lang="en"><head> <meta charset="utf-8"> <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0"> <title>Stencil Component Starter</title> <link rel="modulepreload" href="/build/p-a9691200.js"><script type="module" src="/build/p-a9691200.js" data-stencil data-resources-url="/build/" data-stencil-namespace="custom-imput-demo"></script> <script nomodule="" src="/build/custom-imput-demo.js" data-stencil></script> </head> <body> <custom-input label="Webshop URL" type="url" size="20"></custom-input> </body></html>
+<!doctype html><html dir="ltr" lang="en"><head> <meta charset="utf-8"> <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0"> <title>Stencil Component Starter</title> <script type="module" src="/build/arvato-test.esm.js" data-stencil></script> <script nomodule="" src="/build/arvato-test.js" data-stencil></script> </head> <body> <custom-input label="Webshop URL" type="url" size="20"></custom-input> <script>
+if ('serviceWorker' in navigator && location.protocol !== 'file:') {
+  // auto-unregister service worker during dev mode
+  navigator.serviceWorker.getRegistration().then(function(registration) {
+  if (registration) {
+    registration.unregister().then(function() { location.reload(true) });
+  }
+  });
+}
+</script></body></html>

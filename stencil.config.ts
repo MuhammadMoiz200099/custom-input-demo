@@ -1,7 +1,7 @@
 import { Config } from '@stencil/core';
 
 export const config: Config = {
-  namespace: 'custom-imput-demo',
+  namespace: 'arvato-test',
   outputTargets: [
     {
       type: 'dist',
