@@ -23,6 +23,7 @@ export namespace Components {
           * Define the type of Input Field e.g "url"
          */
         "type": string;
+        "validate": () => Promise<void>;
         /**
           * Define the pattern to validate the input field
          */

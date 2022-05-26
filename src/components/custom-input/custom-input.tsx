@@ -1,5 +1,6 @@
-import { Component, Prop, h, Event, EventEmitter, State } from '@stencil/core';
-import { PatternValidator } from '../../validators/validator';
+import { Component, Prop, h, Event, EventEmitter, State, Method } from '@stencil/core';
+import { handleValidationObject } from '../../utills/validator.utils';
+import { Validator, getValidator, defaultValidator } from '../../validators';
 
 @Component({
   tag: 'custom-input',
@@ -39,22 +40,34 @@ export class CustomInput {
   @Event() onUserInput: EventEmitter<any>;
 
   /**
-   * Component Variable to save the validation message 
-   */
-  @State() validation_message: string;
-
-  /**
    * Component Variable to store input's user typed value 
    */
-   @State() value: string;
+  @State() value: string;
+
+  /**
+   * Validator Instance
+   */
+  _validator: Validator<string> = defaultValidator;
+
+  componentWillLoad() {
+    this._validator = getValidator<string>(handleValidationObject({ pattern: this.validationPattern }));
+  }
+
+  componentWillUpdate() {
+    this._validator = getValidator<string>(handleValidationObject({ pattern: this.validationPattern }));
+  }
 
 
-  handleEventChanged(event) {
-    const validator = PatternValidator(event.target.value, this.validationPattern);
-    this.isValid = validator.isValid;
-    this.validation_message = validator.message;
+  handleEventChanged(event): void {
     this.value = event.target.value;
     this.onUserInput.emit(event);
+    this.validate();
+  }
+
+  @Method()
+  validate(): void {
+    this.isValid = this._validator.validate(this.value);
+    console.log(this._validator.errorMessage, this.isValid)
   }
 
   render() {
@@ -64,14 +77,14 @@ export class CustomInput {
           {this.label && (
             <label class="custom-input-label">{this.label}</label>
           )}
-          <input class={`custom-input ${this.value ? this.isValid ? "custom-input-success" : "custom-input-error"  : ""}`}
+          <input class={`custom-input ${this.value ? this.isValid ? "custom-input-success" : "custom-input-error" : ""}`}
             type={this.type}
             onInput={(event) => this.handleEventChanged(event)}
             size={this.size}
           />
-          {this.value && this.validation_message && (
-            <span class="error_message">{this.validation_message}</span>
-          )}
+          {!this.isValid ?
+            <span class="error_message">{this._validator.errorMessage}</span>
+            : null}
         </div>
       </div>
     );

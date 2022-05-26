@@ -1,12 +1,35 @@
+export interface Validator<A> {
+  validate: (x: A) => boolean;
+  errorMessage?: string;
+}
 
-const DEFAULT_PATTERN = "(https|http|ftp):\/\/|(\w+\.|www.|(\w+:))(\w+)|(\/|-|_|/+|%|&|/+%)(\w+)|\/?\w+|=\w+|(\/)|(\.\w+)";
+export interface AsyncValidator<A> {
+  validate: (x: A) => Promise<boolean>;
+  errorMessage?: string;
+}
 
-export function PatternValidator(value: string, pattren: string) {
-  const reg_pattern = pattren ? pattren : DEFAULT_PATTERN;
-  const regex = new RegExp(reg_pattern);
-  const result = regex.test(value);
-  return {
-    isValid: result,
-    message: result ? "" : "Fill in a valid URL"
+export interface ValidatorEntry {
+  name: string;
+  options?: any;
+}
+
+export const defaultValidator: Validator<any> = {
+  validate: (_x: any) => true
+}
+
+export function combineValidators<A>(v1: Validator<A>, v2: Validator<A>): Validator<A> {
+  let combined: Validator<A>;
+  combined = {
+      validate: (x: A) => {
+          const res1: boolean = v1.validate(x);
+          const res2: boolean = v2.validate(x);
+          if (!res1) {
+              combined.errorMessage = v1.errorMessage;
+          } else if (!res2) {
+              combined.errorMessage = v2.errorMessage;
+          }
+          return res1 && res2;
+      },
   }
+  return combined;
 }

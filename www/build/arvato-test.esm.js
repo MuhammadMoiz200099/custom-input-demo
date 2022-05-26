@@ -1,4 +1,4 @@
-import { B as BUILD, c as consoleDevInfo, p as plt, w as win, H, d as doc, N as NAMESPACE, a as promiseResolve, b as bootstrapLazy } from './index-ca4c0394.js';
+import { B as BUILD, c as consoleDevInfo, p as plt, w as win, H, d as doc, N as NAMESPACE, a as promiseResolve, b as bootstrapLazy } from './index-6faf4cde.js';
 import { g as globalScripts } from './app-globals-0f993ce5.js';
 
 /*
@@ -125,5 +125,5 @@ const patchCloneNodeFix = (HTMLElementPrototype) => {
 
 patchBrowser().then(options => {
   globalScripts();
-  return bootstrapLazy([["custom-input",[[1,"custom-input",{"label":[1],"type":[1],"isValid":[1028,"is-valid"],"size":[2],"validationPattern":[1,"validation-pattern"],"validation_message":[32],"value":[32]}]]]], options);
+  return bootstrapLazy([["custom-input",[[1,"custom-input",{"label":[1],"type":[1],"isValid":[1028,"is-valid"],"size":[2],"validationPattern":[1,"validation-pattern"],"value":[32],"validate":[64]}]]]], options);
 });

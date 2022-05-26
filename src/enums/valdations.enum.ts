@@ -1,3 +1,4 @@
 export enum ValidatorsName {
-  pattern = "pattern"
+  pattern = "pattern",
+  length = "length"
 }
