@@ -1,36 +1,36 @@
 import { newSpecPage } from '@stencil/core/testing';
-import { CustomInput } from './custom-input';
+import { MyComponent } from './my-component';
 
-describe('custom-input', () => {
+describe('my-component', () => {
   it('renders', async () => {
     const { root } = await newSpecPage({
-      components: [CustomInput],
-      html: '<custom-input></custom-input>',
+      components: [MyComponent],
+      html: '<my-component></my-component>',
     });
     expect(root).toEqualHtml(`
-      <custom-input>
+      <my-component>
         <mock:shadow-root>
           <div>
             Hello, World! I'm
           </div>
         </mock:shadow-root>
-      </custom-input>
+      </my-component>
     `);
   });
 
   it('renders with values', async () => {
     const { root } = await newSpecPage({
-      components: [CustomInput],
-      html: `<custom-input first="Stencil" last="'Don't call me a framework' JS"></custom-input>`,
+      components: [MyComponent],
+      html: `<my-component first="Stencil" last="'Don't call me a framework' JS"></my-component>`,
     });
     expect(root).toEqualHtml(`
-      <custom-input first="Stencil" last="'Don't call me a framework' JS">
+      <my-component first="Stencil" last="'Don't call me a framework' JS">
         <mock:shadow-root>
           <div>
             Hello, World! I'm Stencil 'Don't call me a framework' JS
           </div>
         </mock:shadow-root>
-      </custom-input>
+      </my-component>
     `);
   });
 });

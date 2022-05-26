@@ -1,5 +1,5 @@
 import { Component, Prop, h, Event, EventEmitter, State, Method } from '@stencil/core';
-import { handleValidationObject } from '../../utills/validator.utils';
+import { handleValidationObject } from '../../utils/validator.utils';
 import { Validator, getValidator, defaultValidator } from '../../validators';
 
 @Component({
@@ -47,7 +47,7 @@ export class CustomInput {
   /**
    * Validator Instance
    */
-  _validator: Validator<string> = defaultValidator;
+  @State() _validator: Validator<string> = defaultValidator;
 
   componentWillLoad() {
     this._validator = getValidator<string>(handleValidationObject({ pattern: this.validationPattern }));
@@ -67,7 +67,6 @@ export class CustomInput {
   @Method()
   validate(): void {
     this.isValid = this._validator.validate(this.value);
-    console.log(this._validator.errorMessage, this.isValid)
   }
 
   render() {
@@ -82,9 +81,10 @@ export class CustomInput {
             onInput={(event) => this.handleEventChanged(event)}
             size={this.size}
           />
-          {!this.isValid ?
-            <span class="error_message">{this._validator.errorMessage}</span>
-            : null}
+          {this.value ? (
+            !this.isValid &&
+            (<span class="error_message">{this._validator.errorMessage || "Please Fill in a Valid URL"}</span>)
+          ) : null}
         </div>
       </div>
     );

@@ -29,6 +29,20 @@ export namespace Components {
          */
         "validationPattern": string;
     }
+    interface MyComponent {
+        /**
+          * The first name
+         */
+        "first": string;
+        /**
+          * The last name
+         */
+        "last": string;
+        /**
+          * The middle name
+         */
+        "middle": string;
+    }
 }
 declare global {
     interface HTMLCustomInputElement extends Components.CustomInput, HTMLStencilElement {
@@ -37,8 +51,15 @@ declare global {
         prototype: HTMLCustomInputElement;
         new (): HTMLCustomInputElement;
     };
+    interface HTMLMyComponentElement extends Components.MyComponent, HTMLStencilElement {
+    }
+    var HTMLMyComponentElement: {
+        prototype: HTMLMyComponentElement;
+        new (): HTMLMyComponentElement;
+    };
     interface HTMLElementTagNameMap {
         "custom-input": HTMLCustomInputElement;
+        "my-component": HTMLMyComponentElement;
     }
 }
 declare namespace LocalJSX {
@@ -68,8 +89,23 @@ declare namespace LocalJSX {
          */
         "validationPattern"?: string;
     }
+    interface MyComponent {
+        /**
+          * The first name
+         */
+        "first"?: string;
+        /**
+          * The last name
+         */
+        "last"?: string;
+        /**
+          * The middle name
+         */
+        "middle"?: string;
+    }
     interface IntrinsicElements {
         "custom-input": CustomInput;
+        "my-component": MyComponent;
     }
 }
 export { LocalJSX as JSX };
@@ -77,6 +113,7 @@ declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
             "custom-input": LocalJSX.CustomInput & JSXBase.HTMLAttributes<HTMLCustomInputElement>;
+            "my-component": LocalJSX.MyComponent & JSXBase.HTMLAttributes<HTMLMyComponentElement>;
         }
     }
 }
