@@ -1,6 +1,6 @@
 {
-  "name": "custom-input-demo",
-  "version": "1.1.2",
+  "name": "custom-input-stencil-demo",
+  "version": "1.0.0",
   "description": "Stencil Component Starter",
   "main": "dist/index.cjs.js",
   "module": "dist/index.js",
